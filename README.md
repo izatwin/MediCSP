@@ -1,6 +1,6 @@
 # MediCSP
 
-# Sample Command
+## Sample Command
 
     python med_solver.py DBCOND0000353 DBCOND0115953 DBCOND0013565 DBCOND0037418 -d Chrome
 
@@ -9,6 +9,8 @@ DBCOND0000353: Common Cold
 DBCOND0013565: Asthma
 
 DBCOND0037418: Inflammatory Pain
+
+## CSP
 
 Alternatively you can construct a CSP object as such:
 
