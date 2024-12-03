@@ -51,7 +51,7 @@ class CSP:
             found = (self.solution[k], drug)
             found_reverse = (drug, self.solution[k])
             if found in self.constraints and self.constraints[found] == 0:
-                if found not in self.bad_constraints:
+                if found not in self.bad_constraints and found_reverse not in self.bad_constraints:
                     self.bad_constraints.add(found)
                 return False, 0
             if found in self.constraints:

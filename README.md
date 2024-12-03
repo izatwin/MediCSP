@@ -6,6 +6,8 @@
 
 DBCOND0000353: Common Cold
 
+DBCOND0115953: Back pain
+
 DBCOND0013565: Asthma
 
 DBCOND0037418: Inflammatory Pain
