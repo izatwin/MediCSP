@@ -19,12 +19,6 @@ class CSP:
         self.data = data
         self.prescriptions = prescriptions
         self.symptoms = list(self.prescriptions.keys())
-        self.solution = {}
-        self.solution_drugs = []
-        self.maximum_weight = 0
-        self.best_solution = {}
-        self.found_solution = False
-        self.bad_constraints = set()
 
         if os.path.exists(dictionary_file):
             with open(dictionary_file, "rb") as file:
@@ -96,8 +90,14 @@ class CSP:
         print(f"Found weight for solution: {weight}")
     
     def find_solution(self) -> None:
+        self.solution = {}
+        self.solution_drugs = []
+        self.maximum_weight = 0
+        self.best_solution = {}
+        self.found_solution = False
+        self.bad_constraints = set()
+
         self.backtracking(weight=1)
-        self.solution_drugs.clear()
         if self.found_solution:
             print("Solution:")
             for k in self.best_solution.keys():
@@ -128,17 +128,7 @@ if __name__ == "__main__":
             "Blood Clots": ["Warfarin", "Aspirin"],
             "High Cholesterol": ["Atorvastatin"],
             "Heartburn": ["Omeprazole"],
-            # "Thyroid Disorders": ["Levothyroxine"],
             "Fever": ["Paracetamol", "Ibuprofen"]
-
-
-            # "Common Cold": ['Acetaminophen', 'Acetylsalicylic acid', 'Ammonium chloride', 'Ascorbic acid', 'Bromhexine', 'Brompheniramine', 'Caffeine', 'Camphor', 'Chlorcyclizine', 'Chlorpheniramine', 'Choline salicylate', 'Clemastine', 'Codeine', 'DL-Methylephedrine', 'Desloratadine', 'Dexchlorpheniramine', 'Dexchlorpheniramine maleate', 'Dextromethorphan', 'Diclofenac', 'Dimetindene', 'Diphenhydramine', 'Doxylamine', 'Ephedrine', 'Ethyl nitrite', 'Ethylmorphine', 'Eucalyptus oil', 'Guaifenesin', 'Ibuprofen', 'Isopropamide', 'Levocetirizine', 'Levomenthol', 'Loratadine', 'Mepyramine', 'Noscapine', 'Pelargonium sidoides root', 'Pentoxyverine', 'Pheniramine', 'Phenylephrine', 'Phenylpropanolamine', 'Promethazine', 'Pseudoephedrine', 'Pyridoxine', 'Sodium ascorbate', 'Sodium citrate', 'Terpineol', 'Triprolidine', 'Zinc'],
-            # "Asthma": ['Albuterol', 'Ambrosia artemisiifolia pollen', 'Aminophylline', 'Arformoterol', 'Beclomethasone dipropionate', 'Budesonide', 'Carmoterol', 'Chlorpheniramine', 'Ciclesonide', 'Cortisone acetate', 'Cromoglicic acid', 'Desloratadine', 'Dexamethasone', 'Epinephrine', 'Etafedrine', 'Flunisolide', 'Fluticasone', 'Fluticasone furoate', 'Fluticasone propionate', 'Formoterol', 'Guaifenesin', 'Hydrocortisone', 'Indacaterol', 'Ipratropium', 'Lactose', 'Methacholine', 'Methoxyphenamine', 'Methylprednisolone', 'Mometasone', 'Mometasone furoate', 'Mometasone furoate', 'Montelukast', 'Nedocromil', 'Orciprenaline', 'Oxtriphylline', 'Pranlukast', 'Prednisone', 'Racepinephrine', 'Reproterol', 'Salmeterol', 'Sodium citrate', 'Terbutaline', 'Theophylline', 'Tiotropium', 'Triamcinolone', 'Umeclidinium', 'Vilanterol', 'Zafirlukast', 'Zileuton'],
-            # "Heartburn": ['Alginic acid', 'Almasilate', 'Aluminium glycinate', 'Aluminum hydroxide', 'Alverine', 'Belladonna', 'Bismuth subsalicylate', 'Calcium carbonate', 'Cimetidine', 'Citric acid', 'Dexlansoprazole', 'Dihydroxyaluminum sodium carbonate', 'Esomeprazole', 'Famotidine', 'Hydrotalcite', 'L-tartaric acid', 'Magaldrate', 'Magnesium carbonate', 'Magnesium hydroxide', 'Magnesium oxide', 'Magnesium trisilicate', 'Omeprazole', 'Pantoprazole', 'Rabeprazole', 'Ranitidine', 'Silodrate', 'Simethicone', 'Sodium bicarbonate', 'Sodium citrate', 'Vonoprazan']
         }
     )
-    # if ("Paracetamol","Levothyroxine") in csp.constraints:
-    #     print(csp.constraints[("Paracetamol","Levothyroxine")])
-    # else:
-    #     print("No constraint checking the constraints!")
     csp.find_solution()
